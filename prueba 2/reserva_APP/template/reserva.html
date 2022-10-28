@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Lista de reservass</title>
+</head>
+<body style="background-color: grey;" class="container mt-5">
+    <div class="alert alert-info display-1 text-center">LISTA DE RESERVAS</div>
+    {% if reservate %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cantidad de Personas</th>
+                <th>Estado</th>
+                <th>Observacion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservas in reservate %}
+            <tr>
+                <td>{{ reservas.nombre}}</td>
+                <td>{{ reservas.telefono}}</td>
+                <td>{{ reservas.fecha}}</td>
+                <td>{{ reservas.hora}}</td>
+                <td>{{ reservas.cantidadPersonas}}</td>
+                <td>{{ reservas.estado}}</td>
+                <td>{{ reservas.observacion}}</td>
+                <td><a href="/actualizarReserva/{{reservas.id}}"class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></td>
+                <td><a href="/eliminarReserva/{{reservas.id}}"class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encuentran reservass en el sistema</strong>
+    </div>
+    {% endif %}
+
+    <a href="../" class="btn btn-danger">VOLVER</a>
+    <a href="../agregarReserva" class="btn btn-info float-end">Actualizar reservas</a>
+
+</body>
+</html>
